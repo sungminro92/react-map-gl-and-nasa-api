@@ -1,6 +1,6 @@
-import * as React from 'react';
+
 import ReactMapGL from 'react-map-gl';
-import { useCallback, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Marker from '../Marker'
 
 const Map = ({ activeEvents }) => {
@@ -24,7 +24,7 @@ const Map = ({ activeEvents }) => {
 
     let displayMarkers;
     if (events) {
-        displayMarkers = activeEvents.map((event, index) => {
+        displayMarkers = events.map((event, index) => {
             return (
                 <Marker
                     key={index}

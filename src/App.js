@@ -43,18 +43,16 @@ function App() {
     setCategories();
   }, []);
 
+  // console.log(state.activeCategory)
   useEffect(() => {
     const fetchActiveEvents = async () => {
       setLoading(true);
       let activeEvents = [];
-      if (
-        state.activeCategory.length === 1 &&
-        state.activeCategory[0].value === 0
-      ) {
+      if (state.activeCategory.filter(function (e) { return e.value === 0; }).length > 0) {
         let res = await fetch(allEvents);
         let json = await res.json();
         setEvents(json.events);
-      } else if (state.activeCategory.length === 0) {
+      } else if (state.activeCategory.length < 1) {
         setEvents([]);
       } else {
         state.activeCategory.forEach(async (activeEvent, index) => {
